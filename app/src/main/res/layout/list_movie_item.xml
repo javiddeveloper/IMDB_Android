@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="action"
+            type="ir.javid.developer.imdb.sections.listMovie.ListMovieAdapter" />
+
+        <variable
+            name="item"
+            type="ir.javid.developer.imdb.model.Search" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="5dp"
+        android:clipToPadding="true"
+        android:elevation="3dp"
+        android:layoutDirection="rtl"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:background="@color/divider_color"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/poster"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view"/>
+
+        <ir.javid.developer.imdb.widgets.CustomTextView
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="5dp"
+            android:text="@{item.getTitle}"
+            android:textColor="@color/title_text"
+            android:textSize="20sp"
+            app:fontType="bold"
+            app:layout_constraintRight_toLeftOf="@id/poster"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ir.javid.developer.imdb.widgets.CustomTextView
+            android:id="@+id/txt_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="5dp"
+            android:text="@{item.getYear}"
+            android:textColor="@color/sub_title_text"
+            app:fontType="light"
+            app:layout_constraintRight_toLeftOf="@id/poster"
+            app:layout_constraintTop_toBottomOf="@id/txt_title" />
+
+        <ir.javid.developer.imdb.widgets.CustomTextView
+            android:id="@+id/txt_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="5dp"
+            android:text="@{item.getType}"
+            android:textColor="@color/sub_title_text"
+            app:fontType="light"
+            app:layout_constraintRight_toLeftOf="@id/poster"
+            app:layout_constraintTop_toBottomOf="@id/txt_year" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
