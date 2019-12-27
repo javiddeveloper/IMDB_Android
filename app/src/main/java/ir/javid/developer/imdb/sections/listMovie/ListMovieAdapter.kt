@@ -4,16 +4,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ir.javid.developer.imdb.databinding.ListMovieItemBinding
 import android.view.LayoutInflater
-import com.bumptech.glide.Glide
 import ir.javid.developer.imdb.model.Search
+import ir.javid.developer.imdb.widgets.CustomImageView
 
 
 /**
  * Developed by javid
  */
-class ListMovieAdapter(var list: List<Search>) : RecyclerView.Adapter<ListMovieAdapter.ViewHolder>() {
+class ListMovieAdapter(var list: List<Search>) :
+    RecyclerView.Adapter<ListMovieAdapter.ViewHolder>() {
 
     private lateinit var mBinding: ListMovieItemBinding
+    var onClick: OnSearchClick? = null
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -22,34 +25,31 @@ class ListMovieAdapter(var list: List<Search>) : RecyclerView.Adapter<ListMovieA
     }
 
     override fun getItemCount(): Int {
-           return list.size
+        return list.size
     }
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(list[position])
+//        holder.itemView.setOnClickListener { onClick?.onClicked(list[position] as Search) }
+        holder.itemView.setOnClickListener { onClick?.onClicked { search -> list[position] } }
     }
 
 
-    class ViewHolder(val binding: ListMovieItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ListMovieItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Search) {
             binding.item = item
-            Glide.with(binding.poster.context).load(item.poster)
-//            .centerCrop()
-//            .placeholder()
-                .into(binding.poster)
+            binding.poster.imageControl(CustomImageView.NORMAL, item.poster)
             binding.executePendingBindings()
+
         }
 
     }
 
+    interface OnSearchClick {
+        fun onClicked(search: (Any) -> Unit)
+    }
 
-//
-//
-//    inner class ViewHolder(private val binding: ListMovieItemBinding) : RecyclerView.ViewHolder(binding.root) {
-//        fun bind(item: Search) {
-//            binding.executePendingBindings()
-//        }
-//    }
 
 }

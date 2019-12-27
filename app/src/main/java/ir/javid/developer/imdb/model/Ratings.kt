@@ -1,6 +1,8 @@
 package ir.javid.developer.imdb.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Ratings(
-    val source : String,
-    val value : String
+    @SerializedName("Source") val source : String,
+    @SerializedName("Value") val value : String
 )

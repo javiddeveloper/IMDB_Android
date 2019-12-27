@@ -7,17 +7,16 @@ import ir.javid.developer.imdb.model.InfoMovie
 import ir.javid.developer.imdb.network.RestManager
 import java.util.*
 
-class InfoMovieViewModel : ViewModel(),Observer {
+class InfoMovieViewModel : ViewModel(), Observer {
 
 
     var mutableLiveData: MutableLiveData<InfoMovie> = MutableLiveData()
-    private lateinit var imdbID: String
+//    private var imdbID: String = "tt0372784"
 
-
-    init {
+    fun init(imdbID : String) {
 
         RestManager.instance.addObserver(this)
-        RestManager.instance.callImdbList(imdbID)
+        RestManager.instance.callImdbInfoMovie(imdbID)
     }
 
 

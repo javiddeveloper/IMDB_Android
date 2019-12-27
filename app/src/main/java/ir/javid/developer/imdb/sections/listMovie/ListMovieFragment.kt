@@ -8,7 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import ir.javid.developer.imdb.R
 import ir.javid.developer.imdb.databinding.ListMovieFragmentBinding
+import ir.javid.developer.imdb.model.Search
+import ir.javid.developer.imdb.sections.infoMovie.InfoMovieFragment
 
 
 /**
@@ -17,6 +20,7 @@ import ir.javid.developer.imdb.databinding.ListMovieFragmentBinding
 class ListMovieFragment : Fragment() {
     private lateinit var mBinding: ListMovieFragmentBinding
     private lateinit var viewModel: ListMovieViewModel
+    private lateinit var adapter: ListMovieAdapter
 
     companion object {
         fun newInstance() = ListMovieFragment()
@@ -37,12 +41,22 @@ class ListMovieFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ListMovieViewModel::class.java)
         viewModel.mutableLiveData.observe(viewLifecycleOwner, Observer {
-           mBinding.rlcImdbList.layoutManager = LinearLayoutManager(context)
-            mBinding.rlcImdbList.adapter =
-                ListMovieAdapter(it.search)
+            mBinding.rlcImdbList.layoutManager = LinearLayoutManager(context)
+            adapter = ListMovieAdapter(it.search)
+            mBinding.rlcImdbList.adapter = adapter
+
+            adapter.onClick?.onClicked { search ->
+                goToItemMovieInfo(search as Search)
+            }
 
         })
 
     }
 
+    private fun goToItemMovieInfo(search: Search) {
+        childFragmentManager.beginTransaction()
+            .replace(R.id.frame_container, InfoMovieFragment.newInstance(search))
+            .commit()
+
+    }
 }

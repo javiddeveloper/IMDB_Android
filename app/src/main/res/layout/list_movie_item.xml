@@ -4,6 +4,7 @@
     xmlns:bind="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="action"
             type="ir.javid.developer.imdb.sections.listMovie.ListMovieAdapter" />
@@ -14,36 +15,33 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cns_item"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_margin="5dp"
+        android:background="@drawable/card_normal"
         android:clipToPadding="true"
         android:elevation="3dp"
         android:layoutDirection="rtl"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="3dp">
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="1sp"
-            android:background="@color/divider_color"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <ir.javid.developer.imdb.widgets.CustomImageView
             android:id="@+id/poster"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:scaleType="centerCrop"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ir.javid.developer.imdb.widgets.CustomTextView
             android:id="@+id/txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
             android:text="@{item.getTitle}"
             android:textColor="@color/title_text"
             android:textSize="20sp"
@@ -56,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="10dp"
             android:text="@{item.getYear}"
             android:textColor="@color/sub_title_text"
             app:fontType="light"
@@ -68,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="10dp"
             android:text="@{item.getType}"
             android:textColor="@color/sub_title_text"
             app:fontType="light"

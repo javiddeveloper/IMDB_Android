@@ -9,16 +9,17 @@
     </style>
 
     <declare-styleable name="CustomView">
-        <attr name="viewColorName" format="string" />
-        <attr name="viewBackColorName" format="string" />
-        <attr name="transparentStyle" format="boolean" />
+
+        <attr name="imageMode">
+            <enum name="blur" value="0" />
+            <enum name="normal" value="1" />
+        </attr>
         <attr name="fontType">
             <enum name="normal" value="0" />
             <enum name="light" value="1" />
             <enum name="bold" value="2" />
         </attr>
     </declare-styleable>
-
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

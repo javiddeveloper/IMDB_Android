@@ -57,23 +57,6 @@ class RestManager : Observable() {
         })
     }
 
-//    fun callWeatherByLatLang(lat: String, lang: String, tempUnit: String) {
-//        val call = service.getForecastsByLocation(lat, lang, tempUnit, Auth.auth)
-//        call.enqueue(object : Callback<Forecasts> {
-//
-//            override fun onFailure(call: Call<Forecasts>, t: Throwable) {
-//                Log.d("ds", t.message)
-//            }
-//
-//            override fun onResponse(call: Call<Forecasts>, response: Response<Forecasts>) {
-//                if (response.isSuccessful) {
-//                    val forecasts: Forecasts? = response.body()
-//                    setChanged()
-//                    notifyObservers(forecasts)
-//                }
-//            }
-//        })
-//    }
 
 }
 

@@ -16,6 +16,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#E6E6E6"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -38,13 +39,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <ImageView
+                    <ir.javid.developer.imdb.widgets.CustomImageView
                         android:id="@+id/expandedImage"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:fitsSystemWindows="true"
                         android:scaleType="centerCrop"
                         android:src="@drawable/batman"
+                        app:imageMode="blur"
                         app:layout_collapseMode="parallax" />
 
                     <ImageView
@@ -58,10 +60,11 @@
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    app:contentInsetLeft="0dp"
                     android:layout_height="?attr/actionBarSize"
+                    app:contentInsetLeft="0dp"
                     app:layout_collapseMode="pin"
-                    app:popupTheme="@style/AppTheme.PopupOverlay" >
+                    app:popupTheme="@style/AppTheme.PopupOverlay">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -70,10 +73,10 @@
                             android:id="@+id/txt_title"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:gravity="center"
                             android:text="@{item.getTitle}"
                             android:textColor="@color/white_title_text"
-                            app:fontType="bold"
-                            android:gravity="center"/>
+                            app:fontType="bold" />
                     </RelativeLayout>
                 </androidx.appcompat.widget.Toolbar>
 
@@ -81,26 +84,145 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <ImageView
+        <ir.javid.developer.imdb.widgets.CustomImageView
             android:id="@+id/img_poster"
             android:layout_width="150dp"
             android:layout_height="250dp"
-            app:layout_anchor="@id/app_bar"
-            app:layout_anchorGravity="bottom|right"
-            android:src="@drawable/batman"
+            android:layout_marginRight="16dp"
             android:scaleType="centerCrop"
-            android:layout_marginRight="16dp"/>
+            android:src="@drawable/batman"
+            app:layout_anchor="@id/app_bar"
+            app:layout_anchorGravity="bottom|right" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <androidx.constraintlayout.widget.Constraints
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp">
+                android:layout_height="wrap_content">
 
-            </androidx.constraintlayout.widget.Constraints>
+                <ir.javid.developer.imdb.widgets.CustomTextView
+                    android:id="@+id/txt_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="180dp"
+                    android:background="@drawable/card_normal"
+                    android:gravity="center"
+                    android:text="@{item.year}"
+                    android:textColor="@color/title_text"
+                    android:textSize="23sp"
+                    app:fontType="bold"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ir.javid.developer.imdb.widgets.CustomTextView
+                    android:id="@+id/txt_rated"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="180dp"
+                    android:background="@drawable/card_normal"
+                    android:gravity="center"
+                    android:text="@{item.rated}"
+                    android:textColor="@color/sub_title_text"
+                    app:fontType="bold"
+                    app:layout_constraintTop_toBottomOf="@id/txt_year" />
+
+                <ir.javid.developer.imdb.widgets.CustomTextView
+                    android:id="@+id/txt_released"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="180dp"
+                    android:background="@drawable/card_normal"
+                    android:gravity="center"
+                    android:text="@{item.released}"
+                    android:textColor="@color/sub_title_text"
+                    app:fontType="bold"
+                    app:layout_constraintTop_toBottomOf="@id/txt_rated" />
+
+                <ir.javid.developer.imdb.widgets.CustomTextView
+                    android:id="@+id/txt_runtime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/card_normal"
+                    android:gravity="right"
+                    android:padding="5dp"
+                    android:text="@{item.runtime}"
+                    android:textColor="@color/sub_title_text"
+                    app:fontType="bold"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txt_released" />
+
+                <ir.javid.developer.imdb.widgets.CustomTextView
+                    android:id="@+id/txt_writer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/card_normal"
+                    android:gravity="left"
+                    android:padding="5dp"
+                    android:text="@{item.writer}"
+                    android:textColor="@color/sub_title_text"
+                    app:fontType="light"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txt_runtime" />
+
+                <ir.javid.developer.imdb.widgets.CustomTextView
+                    android:id="@+id/txt_actors"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/card_normal"
+                    android:gravity="left"
+                    android:padding="5dp"
+                    android:text="@{item.actors}"
+                    android:textColor="@color/sub_title_text"
+                    app:fontType="light"
+                    app:layout_constraintTop_toBottomOf="@id/txt_writer" />
+
+                <ir.javid.developer.imdb.widgets.CustomTextView
+                    android:id="@+id/txt_plot"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/card_normal"
+                    android:gravity="left"
+                    android:padding="5dp"
+                    android:text="@{item.plot}"
+                    android:textColor="@color/sub_title_text"
+                    app:fontType="light"
+                    app:layout_constraintTop_toBottomOf="@id/txt_actors" />
+
+                <ir.javid.developer.imdb.widgets.CustomTextView
+                    android:id="@+id/txt_language"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/card_normal"
+                    android:gravity="left"
+                    android:padding="5dp"
+                    android:text="@{item.language}"
+                    android:textColor="@color/sub_title_text"
+                    app:fontType="light"
+                    app:layout_constraintTop_toBottomOf="@id/txt_plot" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

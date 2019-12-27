@@ -3,6 +3,7 @@ package ir.javid.developer.imdb
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import ir.javid.developer.imdb.sections.infoMovie.InfoMovieFragment
+import ir.javid.developer.imdb.sections.listMovie.ListMovieFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -11,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.frame_container, InfoMovieFragment.newInstance())
+            .replace(R.id.frame_container, ListMovieFragment.newInstance())
             .commit()
     }
 }
