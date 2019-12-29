@@ -14,8 +14,11 @@ import java.util.*
 /**
  * Developed by javid
  */
-class RestManager : Observable() {
+class RestManager {
     private val api = ApiClient().loadData()
+    val listInfoMoviev: MutableLiveData<InfoMovie> = MutableLiveData()
+    val listImdb: MutableLiveData<Imdb> = MutableLiveData()
+
     companion object {
         val instance: RestManager by lazy {
             RestManager()
@@ -23,35 +26,34 @@ class RestManager : Observable() {
     }
 
     fun callImdbList(artist: String) {
-        val list: MutableLiveData<Imdb> = MutableLiveData()
+
         val call = api.getImdbList(artist)
         call.enqueue(object : Callback<Imdb> {
             override fun onFailure(call: Call<Imdb>, t: Throwable) {
-                list.value = null
+                listImdb.value = null
 
             }
 
             override fun onResponse(call: Call<Imdb>, response: Response<Imdb>) {
                 if (response.isSuccessful) {
-                    setChanged()
-                    notifyObservers(response.body())
+                    listImdb.value = response.body()
                 }
             }
         })
     }
+
     fun callImdbInfoMovie(imdbID: String) {
-        val list: MutableLiveData<InfoMovie> = MutableLiveData()
+
         val call = api.getInfoFilm(imdbID)
         call.enqueue(object : Callback<InfoMovie> {
             override fun onFailure(call: Call<InfoMovie>, t: Throwable) {
-                list.value = null
+                listInfoMoviev.value = null
 
             }
 
             override fun onResponse(call: Call<InfoMovie>, response: Response<InfoMovie>) {
                 if (response.isSuccessful) {
-                    setChanged()
-                    notifyObservers(response.body())
+                    listInfoMoviev.value = response.body()
                 }
             }
         })

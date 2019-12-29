@@ -17,12 +17,10 @@ import ir.javid.developer.imdb.widgets.CustomImageView
 class InfoMovieFragment : Fragment() {
     private lateinit var mBinding: InfoMovieFragmentBinding
     private lateinit var viewModel: InfoMovieViewModel
-    private lateinit var search: Search
-
+    private lateinit var search: String
 
     companion object {
-
-        fun newInstance(item: Search): InfoMovieFragment {
+        fun newInstance(item: String): InfoMovieFragment {
             val fragment = InfoMovieFragment()
             val args = Bundle()
             fragment.arguments = args
@@ -31,15 +29,16 @@ class InfoMovieFragment : Fragment() {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProviders.of(this).get(InfoMovieViewModel::class.java)
+    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mBinding = InfoMovieFragmentBinding.inflate(inflater, container, false)
         mBinding.action = this
-
-
+        viewModel.getMovieInfo(search)
         mBinding.appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
             if (verticalOffset < -300) {
                 mBinding.txtTitle.visibility = View.VISIBLE
@@ -49,18 +48,15 @@ class InfoMovieFragment : Fragment() {
                 mBinding.txtTitle.visibility = View.INVISIBLE
             }
         })
+
         return mBinding.root
     }
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(InfoMovieViewModel::class.java)
-        viewModel.init(search.imdbID)
         viewModel.mutableLiveData.observe(viewLifecycleOwner, Observer {
             mBinding.item = it
             initPoster(it.poster)
-
         })
     }
 

@@ -7,22 +7,13 @@ import ir.javid.developer.imdb.model.InfoMovie
 import ir.javid.developer.imdb.network.RestManager
 import java.util.*
 
-class InfoMovieViewModel : ViewModel(), Observer {
+class InfoMovieViewModel : ViewModel() {
 
 
-    var mutableLiveData: MutableLiveData<InfoMovie> = MutableLiveData()
-//    private var imdbID: String = "tt0372784"
+    var mutableLiveData: MutableLiveData<InfoMovie> = RestManager.instance.listInfoMoviev
 
-    fun init(imdbID : String) {
-
-        RestManager.instance.addObserver(this)
-        RestManager.instance.callImdbInfoMovie(imdbID)
+    fun getMovieInfo(id: String) {
+        RestManager.instance.callImdbInfoMovie(id)
     }
 
-
-    override fun update(observable: Observable?, any: Any?) {
-        if (observable is RestManager)
-            if (any is InfoMovie)
-                mutableLiveData.value = any
-    }
 }

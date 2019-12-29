@@ -10,23 +10,15 @@ import java.util.*
 /**
  * Developed by javid
  */
-class ListMovieViewModel : ViewModel(), java.util.Observer {
+class ListMovieViewModel : ViewModel()/*, java.util.Observer*/ {
 
 
-    var mutableLiveData: MutableLiveData<Imdb> = MutableLiveData()
+    var mutableLiveData: MutableLiveData<Imdb> = RestManager.instance.listImdb
     private val artist: String = "batman"
 
 
     init {
-
-        RestManager.instance.addObserver(this)
         RestManager.instance.callImdbList(artist)
     }
 
-
-    override fun update(observable: Observable?, any: Any?) {
-        if (observable is RestManager)
-            if (any is Imdb)
-                mutableLiveData.value = any
-    }
 }

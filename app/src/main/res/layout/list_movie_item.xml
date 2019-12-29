@@ -5,9 +5,9 @@
 
     <data>
 
-        <variable
-            name="action"
-            type="ir.javid.developer.imdb.sections.listMovie.ListMovieAdapter" />
+<!--        <variable-->
+<!--            name="action"-->
+<!--            type="ir.javid.developer.imdb.sections.listMovie.ListMovieAdapter" />-->
 
         <variable
             name="item"
