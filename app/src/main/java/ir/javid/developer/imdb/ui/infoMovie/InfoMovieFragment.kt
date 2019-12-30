@@ -34,7 +34,8 @@ class InfoMovieFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
         mBinding = InfoMovieFragmentBinding.inflate(inflater, container, false)
         mBinding.action = this
         viewModel.getMovieInfo(search)
@@ -61,8 +62,6 @@ class InfoMovieFragment : Fragment() {
 
     private fun initPoster(poster: String) {
         mBinding.expandedImage.imageControl(CustomImageView.BLUR, poster)
-        mBinding.imgPoster.imageControl(CustomImageView.NORMAL, poster)
-
     }
 
 

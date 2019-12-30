@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
@@ -10,7 +11,7 @@
 
         <variable
             name="item"
-            type="ir.javid.developer.imdb.model.InfoMovie" />
+            type="ir.javid.developer.imdb.data.rest.model.InfoMovie" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -92,8 +93,10 @@
             android:scaleType="centerCrop"
             android:src="@drawable/batman"
             app:layout_anchor="@id/app_bar"
-            app:layout_anchorGravity="bottom|right" />
+            app:layout_anchorGravity="bottom|right"
+            app:imageUrl="@{item.poster}"/>
 
+<!--        app:imageUrl="@{item.poster}"-->
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
