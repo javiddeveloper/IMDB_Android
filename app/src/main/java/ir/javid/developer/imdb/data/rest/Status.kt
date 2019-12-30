@@ -1,4 +1,4 @@
-package ir.javid.developer.imdb.network
+package ir.javid.developer.imdb.data.rest
 
 /**
  * Developed by javid

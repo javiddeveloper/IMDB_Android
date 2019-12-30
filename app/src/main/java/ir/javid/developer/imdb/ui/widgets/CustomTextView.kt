@@ -1,6 +1,5 @@
-package ir.javid.developer.imdb.widgets
+package ir.javid.developer.imdb.ui.widgets
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Typeface

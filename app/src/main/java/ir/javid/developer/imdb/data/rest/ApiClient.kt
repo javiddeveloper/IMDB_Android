@@ -1,6 +1,6 @@
-package ir.javid.developer.imdb.network
+package ir.javid.developer.imdb.data.rest
 
-import ir.javid.developer.imdb.model.Address.Companion.BASE_URL
+import ir.javid.developer.imdb.data.rest.model.Address.Companion.BASE_URL
 import okhttp3.OkHttpClient
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Retrofit
@@ -28,7 +28,7 @@ class ApiClient {
         return httpClient.build()
     }
 
-    fun loadData(): Api{
+    fun loadData(): Api {
         return Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client())

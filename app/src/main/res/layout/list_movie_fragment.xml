@@ -6,13 +6,13 @@
 
         <variable
             name="action"
-            type="ir.javid.developer.imdb.sections.listMovie.ListMovieFragment" />
+            type="ir.javid.developer.imdb.ui.listMovie.ListMovieFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".sections.listMovie.ListMovieFragment">
+        tools:context=".ui.listMovie.ListMovieFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rlc_imdb_list"

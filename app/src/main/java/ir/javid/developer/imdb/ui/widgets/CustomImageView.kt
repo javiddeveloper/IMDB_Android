@@ -1,13 +1,9 @@
-package ir.javid.developer.imdb.widgets
+package ir.javid.developer.imdb.ui.widgets
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
-import android.graphics.Typeface
 import android.util.AttributeSet
 import android.widget.ImageView
-import androidx.appcompat.widget.AppCompatTextView
-import androidx.core.widget.ImageViewCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import ir.javid.developer.imdb.R

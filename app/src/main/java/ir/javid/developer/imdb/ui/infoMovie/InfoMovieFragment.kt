@@ -1,4 +1,4 @@
-package ir.javid.developer.imdb.sections.infoMovie
+package ir.javid.developer.imdb.ui.infoMovie
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -10,8 +10,7 @@ import com.google.android.material.appbar.AppBarLayout
 
 import ir.javid.developer.imdb.databinding.InfoMovieFragmentBinding
 import androidx.lifecycle.Observer
-import ir.javid.developer.imdb.model.Search
-import ir.javid.developer.imdb.widgets.CustomImageView
+import ir.javid.developer.imdb.ui.widgets.CustomImageView
 
 
 class InfoMovieFragment : Fragment() {

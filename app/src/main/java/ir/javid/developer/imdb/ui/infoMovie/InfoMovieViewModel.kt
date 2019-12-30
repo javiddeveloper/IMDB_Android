@@ -1,11 +1,9 @@
-package ir.javid.developer.imdb.sections.infoMovie
+package ir.javid.developer.imdb.ui.infoMovie
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ir.javid.developer.imdb.model.Imdb
-import ir.javid.developer.imdb.model.InfoMovie
-import ir.javid.developer.imdb.network.RestManager
-import java.util.*
+import ir.javid.developer.imdb.data.rest.model.InfoMovie
+import ir.javid.developer.imdb.data.rest.RestManager
 
 class InfoMovieViewModel : ViewModel() {
 

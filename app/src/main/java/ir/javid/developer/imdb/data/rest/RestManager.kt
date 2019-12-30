@@ -1,15 +1,14 @@
-package ir.javid.developer.imdb.network
+package ir.javid.developer.imdb.data.rest
 
 import androidx.lifecycle.MutableLiveData
 //import io.reactivex.android.schedulers.AndroidSchedulers
 //import io.reactivex.disposables.CompositeDisposable
 //import io.reactivex.schedulers.Schedulers
-import ir.javid.developer.imdb.model.Imdb
-import ir.javid.developer.imdb.model.InfoMovie
+import ir.javid.developer.imdb.data.rest.model.Imdb
+import ir.javid.developer.imdb.data.rest.model.InfoMovie
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
 /**
  * Developed by javid

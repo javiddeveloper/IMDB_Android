@@ -6,7 +6,7 @@
 
         <variable
             name="action"
-            type="ir.javid.developer.imdb.sections.infoMovie.InfoMovieFragment" />
+            type="ir.javid.developer.imdb.ui.infoMovie.InfoMovieFragment" />
 
         <variable
             name="item"
@@ -39,7 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <ir.javid.developer.imdb.widgets.CustomImageView
+                    <ir.javid.developer.imdb.ui.widgets.CustomImageView
                         android:id="@+id/expandedImage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -69,7 +69,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <ir.javid.developer.imdb.widgets.CustomTextView
+                        <ir.javid.developer.imdb.ui.widgets.CustomTextView
                             android:id="@+id/txt_title"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -84,7 +84,7 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <ir.javid.developer.imdb.widgets.CustomImageView
+        <ir.javid.developer.imdb.ui.widgets.CustomImageView
             android:id="@+id/img_poster"
             android:layout_width="150dp"
             android:layout_height="250dp"
@@ -103,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ir.javid.developer.imdb.widgets.CustomTextView
+                <ir.javid.developer.imdb.ui.widgets.CustomTextView
                     android:id="@+id/txt_year"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -118,7 +118,7 @@
                     app:fontType="bold"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ir.javid.developer.imdb.widgets.CustomTextView
+                <ir.javid.developer.imdb.ui.widgets.CustomTextView
                     android:id="@+id/txt_rated"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -132,7 +132,7 @@
                     app:fontType="bold"
                     app:layout_constraintTop_toBottomOf="@id/txt_year" />
 
-                <ir.javid.developer.imdb.widgets.CustomTextView
+                <ir.javid.developer.imdb.ui.widgets.CustomTextView
                     android:id="@+id/txt_released"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -146,7 +146,7 @@
                     app:fontType="bold"
                     app:layout_constraintTop_toBottomOf="@id/txt_rated" />
 
-                <ir.javid.developer.imdb.widgets.CustomTextView
+                <ir.javid.developer.imdb.ui.widgets.CustomTextView
                     android:id="@+id/txt_runtime"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -162,7 +162,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/txt_released" />
 
-                <ir.javid.developer.imdb.widgets.CustomTextView
+                <ir.javid.developer.imdb.ui.widgets.CustomTextView
                     android:id="@+id/txt_writer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -178,7 +178,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/txt_runtime" />
 
-                <ir.javid.developer.imdb.widgets.CustomTextView
+                <ir.javid.developer.imdb.ui.widgets.CustomTextView
                     android:id="@+id/txt_actors"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -193,7 +193,7 @@
                     app:fontType="light"
                     app:layout_constraintTop_toBottomOf="@id/txt_writer" />
 
-                <ir.javid.developer.imdb.widgets.CustomTextView
+                <ir.javid.developer.imdb.ui.widgets.CustomTextView
                     android:id="@+id/txt_plot"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -208,7 +208,7 @@
                     app:fontType="light"
                     app:layout_constraintTop_toBottomOf="@id/txt_actors" />
 
-                <ir.javid.developer.imdb.widgets.CustomTextView
+                <ir.javid.developer.imdb.ui.widgets.CustomTextView
                     android:id="@+id/txt_language"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

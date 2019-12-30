@@ -1,8 +1,8 @@
-package ir.javid.developer.imdb.network
+package ir.javid.developer.imdb.data.rest
 
-import ir.javid.developer.imdb.model.Address
-import ir.javid.developer.imdb.model.Imdb
-import ir.javid.developer.imdb.model.InfoMovie
+import ir.javid.developer.imdb.data.rest.model.Address
+import ir.javid.developer.imdb.data.rest.model.Imdb
+import ir.javid.developer.imdb.data.rest.model.InfoMovie
 import retrofit2.http.GET
 //import io.reactivex.Observable
 import retrofit2.Call

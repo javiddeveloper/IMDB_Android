@@ -1,4 +1,4 @@
-package ir.javid.developer.imdb.sections.listMovie
+package ir.javid.developer.imdb.ui.listMovie
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -6,13 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import ir.javid.developer.imdb.R
 import ir.javid.developer.imdb.databinding.ListMovieFragmentBinding
-import ir.javid.developer.imdb.model.Search
-import ir.javid.developer.imdb.sections.infoMovie.InfoMovieFragment
+import ir.javid.developer.imdb.data.rest.model.Search
+import ir.javid.developer.imdb.ui.infoMovie.InfoMovieFragment
 
 
 /**

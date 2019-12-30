@@ -1,9 +1,9 @@
-package ir.javid.developer.imdb
+package ir.javid.developer.imdb.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import ir.javid.developer.imdb.sections.infoMovie.InfoMovieFragment
-import ir.javid.developer.imdb.sections.listMovie.ListMovieFragment
+import ir.javid.developer.imdb.R
+import ir.javid.developer.imdb.ui.listMovie.ListMovieFragment
 
 
 class MainActivity : AppCompatActivity() {

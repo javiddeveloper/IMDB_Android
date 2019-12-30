@@ -1,4 +1,4 @@
-package ir.javid.developer.imdb.model
+package ir.javid.developer.imdb.data.rest.model
 
 import com.google.gson.annotations.SerializedName
 

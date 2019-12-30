@@ -1,11 +1,9 @@
-package ir.javid.developer.imdb.sections.listMovie
+package ir.javid.developer.imdb.ui.listMovie
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import ir.javid.developer.imdb.model.Imdb
-import ir.javid.developer.imdb.network.RestManager
-import java.util.*
+import ir.javid.developer.imdb.data.rest.model.Imdb
+import ir.javid.developer.imdb.data.rest.RestManager
 
 /**
  * Developed by javid

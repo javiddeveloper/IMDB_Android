@@ -1,11 +1,11 @@
-package ir.javid.developer.imdb.sections.listMovie
+package ir.javid.developer.imdb.ui.listMovie
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ir.javid.developer.imdb.databinding.ListMovieItemBinding
 import android.view.LayoutInflater
-import ir.javid.developer.imdb.model.Search
-import ir.javid.developer.imdb.widgets.CustomImageView
+import ir.javid.developer.imdb.data.rest.model.Search
+import ir.javid.developer.imdb.ui.widgets.CustomImageView
 
 
 /**

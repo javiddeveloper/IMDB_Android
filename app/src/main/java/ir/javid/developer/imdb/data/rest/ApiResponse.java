@@ -1,6 +1,4 @@
-package ir.javid.developer.imdb.network;
-
-import com.google.gson.JsonElement;
+package ir.javid.developer.imdb.data.rest;
 
 /**
  * Developed by javid
