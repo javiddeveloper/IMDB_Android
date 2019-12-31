@@ -2,7 +2,7 @@ package ir.javid.developer.imdb.data.db.repository
 
 import androidx.lifecycle.LiveData
 import ir.javid.developer.imdb.data.db.MovieInfoDAO
-import ir.javid.developer.imdb.data.rest.model.InfoMovieEntity
+import ir.javid.developer.imdb.data.model.InfoMovieEntity
 
 /**
  * Developed by javid

@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import ir.javid.developer.imdb.data.rest.model.InfoMovieEntity
+import ir.javid.developer.imdb.data.model.InfoMovieEntity
 
 /**
  * Developed by javid

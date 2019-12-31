@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import ir.javid.developer.imdb.data.db.MovieInfoDB
-import ir.javid.developer.imdb.data.rest.model.InfoMovieEntity
+import ir.javid.developer.imdb.data.model.InfoMovieEntity
 import kotlinx.coroutines.launch
 
 /**

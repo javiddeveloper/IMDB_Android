@@ -1,6 +1,7 @@
 package ir.javid.developer.imdb.data.rest
 
 import androidx.lifecycle.MutableLiveData
+import ir.javid.developer.imdb.data.db.MovieInfoDB
 //import io.reactivex.android.schedulers.AndroidSchedulers
 //import io.reactivex.disposables.CompositeDisposable
 //import io.reactivex.schedulers.Schedulers

@@ -1,15 +1,13 @@
-package ir.javid.developer.imdb.data.rest.model
+package ir.javid.developer.imdb.data.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 /**
  * Developed by javid
  */
 @Entity(tableName = "tbl_info_movie")
-data class InfoMovieEntity (
-    @PrimaryKey @ColumnInfo(name = "infoId") var id:Int,
+data class InfoMovieEntity(
+    @PrimaryKey @ColumnInfo(name = "infoId") var id: Int,
     val title: String,
     val year: String,
     val rated: String,
@@ -24,6 +22,7 @@ data class InfoMovieEntity (
     val country: String,
     val awards: String,
     val poster: String,
+//    val ratings: List<RatingsEntity>,
     val metascore: String,
     val imdbRating: String,
     val imdbVotes: String,
