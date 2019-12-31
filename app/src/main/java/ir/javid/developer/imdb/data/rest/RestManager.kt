@@ -47,7 +47,6 @@ class RestManager {
         call.enqueue(object : Callback<InfoMovie> {
             override fun onFailure(call: Call<InfoMovie>, t: Throwable) {
                 listInfoMoviev.value = null
-
             }
 
             override fun onResponse(call: Call<InfoMovie>, response: Response<InfoMovie>) {
