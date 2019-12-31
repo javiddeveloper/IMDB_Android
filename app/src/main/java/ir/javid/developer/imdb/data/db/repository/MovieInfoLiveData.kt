@@ -1,4 +1,4 @@
-package ir.javid.developer.imdb.data.db.Repository
+package ir.javid.developer.imdb.data.db.repository
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

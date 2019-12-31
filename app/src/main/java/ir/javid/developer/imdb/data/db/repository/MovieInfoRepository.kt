@@ -1,4 +1,4 @@
-package ir.javid.developer.imdb.data.db.Repository
+package ir.javid.developer.imdb.data.db.repository
 
 import androidx.lifecycle.LiveData
 import ir.javid.developer.imdb.data.db.MovieInfoDAO
