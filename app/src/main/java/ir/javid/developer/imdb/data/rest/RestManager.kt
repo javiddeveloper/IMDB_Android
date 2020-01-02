@@ -34,15 +34,20 @@ class RestManager : Observable() {
                 callImdbList(artist)
             }
 
-            override fun onResponse(call: Call<Imdb>, response: Response<Imdb>) {
+            override fun onResponse(call: Call<Imdb>, response: Response<Imdb>) =
                 if (response.isSuccessful) {
-                    setChanged()
-                    notifyObservers(response.body())
+                    val imdb: Imdb = response.body()!!
+                    when {
+                        imdb.response -> {
+                            setChanged()
+                            notifyObservers(response.body())
+                        }
+                        else -> {}
+                    }
                 } else {
                     Address.instance.api = Address.API_KEY_TOW
                     callImdbList(artist)
                 }
-            }
         })
     }
 

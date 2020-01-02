@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/search_box"
+        android:orientation="vertical">
+
+        <ir.javid.developer.imdb.ui.widgets.CustomEditext
+            android:id="@+id/editText_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/white_title_text"
+            android:gravity="end" />
+
+        <ir.javid.developer.imdb.ui.widgets.CustomImageView
+            android:layout_width="40dp"
+            android:layout_height="45dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="5dp"
+            android:padding="7dp"
+            android:src="@android:drawable/ic_search_category_default" />
+    </FrameLayout>
+</layout>

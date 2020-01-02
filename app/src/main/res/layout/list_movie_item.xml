@@ -27,7 +27,8 @@
             android:layout_margin="5dp"
             android:scaleType="centerCrop"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:imageUrl="@{item.poster}"/>
 
         <ir.javid.developer.imdb.ui.widgets.CustomTextView
             android:id="@+id/txt_title"

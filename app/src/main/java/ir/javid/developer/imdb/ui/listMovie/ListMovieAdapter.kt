@@ -40,14 +40,14 @@ class ListMovieAdapter(var list: List<Search>, private val listener: OnSearchCli
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Search) {
             binding.item = item
-            binding.poster.imageControl(CustomImageView.NORMAL, item.poster)
+//            binding.poster.imageControl(CustomImageView.NORMAL, item.poster)
             binding.executePendingBindings()
 
         }
 
     }
 
-   open interface OnSearchClick {
+   interface OnSearchClick {
         fun onClicked(search: Search)
     }
 

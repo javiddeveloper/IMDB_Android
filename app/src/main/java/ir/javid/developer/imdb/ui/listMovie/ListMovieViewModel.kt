@@ -9,12 +9,17 @@ import ir.javid.developer.imdb.data.rest.RestManager
 /**
  * Developed by javid
  */
-class ListMovieViewModel : ViewModel(){
+class ListMovieViewModel : ViewModel() {
 
     val liveImdb: MutableLiveData<Imdb> = MoveiManager.instance.liveImdb
     private val artist: String = "batman"
+
     init {
         RestManager.instance.callImdbList(artist)
+    }
+
+    fun callList(moveiName: String) {
+        RestManager.instance.callImdbList(moveiName)
     }
 
 }

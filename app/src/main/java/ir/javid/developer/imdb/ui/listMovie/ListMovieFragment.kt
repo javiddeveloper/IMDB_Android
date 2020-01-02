@@ -1,5 +1,6 @@
 package ir.javid.developer.imdb.ui.listMovie
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,10 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.jakewharton.rxbinding3.widget.textChanges
+import io.reactivex.android.plugins.RxAndroidPlugins
 import ir.javid.developer.imdb.R
 import ir.javid.developer.imdb.databinding.ListMovieFragmentBinding
 import ir.javid.developer.imdb.data.rest.model.Search
 import ir.javid.developer.imdb.ui.infoMovie.InfoMovieFragment
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -27,13 +31,19 @@ class ListMovieFragment : Fragment() {
     }
 
 
+    @SuppressLint("CheckResult")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         mBinding = ListMovieFragmentBinding.inflate(inflater, container, false)
         mBinding.action = this
-
+        mBinding.include.editTextSearch.textChanges()
+            .debounce(3000,TimeUnit.MILLISECONDS)
+            .filter { it.length>3 }
+            .subscribe {
+                viewModel.callList(it.toString())
+        }
         return mBinding.root
 
     }
