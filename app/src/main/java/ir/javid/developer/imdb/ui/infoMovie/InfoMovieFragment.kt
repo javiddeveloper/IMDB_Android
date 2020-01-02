@@ -40,24 +40,20 @@ class InfoMovieFragment : Fragment() {
         mBinding = InfoMovieFragmentBinding.inflate(inflater, container, false)
         mBinding.action = this
         mBinding.visible = true
-        if (search != null)
-            viewModel.getMovieInfo(search)
+        viewModel.getMovieInfo(search)
         mBinding.appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
-            //            Log.d("_position", verticalOffset.toString())
-//            Log.d("_positionMAX", verticalOffset.toString())
             if (-verticalOffset > appBarLayout.totalScrollRange / 2) {
                 mBinding.visible = false
             } else if (-verticalOffset < appBarLayout.totalScrollRange / 2) {
                 mBinding.visible = true
             }
         })
-
         return mBinding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.mutableLiveData.observe(viewLifecycleOwner, Observer {
+        viewModel.liveInfoMovie.observe(viewLifecycleOwner, Observer {
             mBinding.item = it
             initPoster(it.poster)
         })

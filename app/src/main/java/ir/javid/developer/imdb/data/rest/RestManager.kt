@@ -2,6 +2,7 @@ package ir.javid.developer.imdb.data.rest
 
 import androidx.lifecycle.MutableLiveData
 import ir.javid.developer.imdb.data.db.MovieInfoDB
+import ir.javid.developer.imdb.data.rest.model.Address
 //import io.reactivex.android.schedulers.AndroidSchedulers
 //import io.reactivex.disposables.CompositeDisposable
 //import io.reactivex.schedulers.Schedulers
@@ -10,14 +11,13 @@ import ir.javid.developer.imdb.data.rest.model.InfoMovie
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 /**
  * Developed by javid
  */
-class RestManager {
+class RestManager : Observable() {
     private val api = ApiClient().loadData()
-    val listInfoMoviev: MutableLiveData<InfoMovie> = MutableLiveData()
-    val listImdb: MutableLiveData<Imdb> = MutableLiveData()
 
     companion object {
         val instance: RestManager by lazy {
@@ -27,16 +27,20 @@ class RestManager {
 
     fun callImdbList(artist: String) {
 
-        val call = api.getImdbList(artist)
+        val call = api.getImdbList(Address.instance.api, artist)
         call.enqueue(object : Callback<Imdb> {
             override fun onFailure(call: Call<Imdb>, t: Throwable) {
-                listImdb.value = null
-
+                Address.instance.api = Address.API_KEY_TOW
+                callImdbList(artist)
             }
 
             override fun onResponse(call: Call<Imdb>, response: Response<Imdb>) {
                 if (response.isSuccessful) {
-                    listImdb.value = response.body()
+                    setChanged()
+                    notifyObservers(response.body())
+                } else {
+                    Address.instance.api = Address.API_KEY_TOW
+                    callImdbList(artist)
                 }
             }
         })
@@ -44,15 +48,20 @@ class RestManager {
 
     fun callImdbInfoMovie(imdbID: String) {
 
-        val call = api.getInfoFilm(imdbID)
+        val call = api.getInfoFilm(Address.API_KEY_ONE, imdbID)
         call.enqueue(object : Callback<InfoMovie> {
             override fun onFailure(call: Call<InfoMovie>, t: Throwable) {
-                listInfoMoviev.value = null
+                Address.instance.api = Address.API_KEY_TOW
+                callImdbInfoMovie(imdbID)
             }
 
             override fun onResponse(call: Call<InfoMovie>, response: Response<InfoMovie>) {
                 if (response.isSuccessful) {
-                    listInfoMoviev.value = response.body()
+                    setChanged()
+                    notifyObservers(response.body())
+                } else {
+                    Address.instance.api = Address.API_KEY_TOW
+                    callImdbInfoMovie(imdbID)
                 }
             }
         })

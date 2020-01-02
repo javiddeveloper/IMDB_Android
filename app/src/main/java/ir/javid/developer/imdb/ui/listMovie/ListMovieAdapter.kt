@@ -11,7 +11,7 @@ import ir.javid.developer.imdb.ui.widgets.CustomImageView
 /**
  * Developed by javid
  */
-class ListMovieAdapter(var list: List<Search>, val listener: OnSearchClick) :
+class ListMovieAdapter(var list: List<Search>, private val listener: OnSearchClick) :
     RecyclerView.Adapter<ListMovieAdapter.ViewHolder>() {
 
     private lateinit var mBinding: ListMovieItemBinding

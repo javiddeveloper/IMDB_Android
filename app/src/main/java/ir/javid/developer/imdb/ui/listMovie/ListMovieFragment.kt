@@ -41,7 +41,7 @@ class ListMovieFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ListMovieViewModel::class.java)
-        viewModel.mutableLiveData.observe(viewLifecycleOwner, Observer {
+        viewModel.liveImdb.observe(viewLifecycleOwner, Observer {
             mBinding.rlcImdbList.layoutManager = LinearLayoutManager(context)
             adapter = ListMovieAdapter(it.search, object : ListMovieAdapter.OnSearchClick {
                 override fun onClicked(search: Search) {

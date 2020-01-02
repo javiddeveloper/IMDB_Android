@@ -14,12 +14,12 @@ import retrofit2.http.Query
 interface Api {
 
     // get imdb list
-    @GET("${Address.BASE_URL}${Address.API_KEY}")
-    fun getImdbList(@Query("s") artist: String): Call<Imdb>
+    @GET(Address.BASE_URL)
+    fun getImdbList(@Query("apikey") apikey: String, @Query("s") artist: String): Call<Imdb>
 
     // get imdb list
-    @GET("${Address.BASE_URL}${Address.API_KEY}")
-    fun getInfoFilm(@Query("i") imdbID: String): Call<InfoMovie>
+    @GET(Address.BASE_URL)
+    fun getInfoFilm(@Query("apikey") apikey: String, @Query("i") imdbID: String): Call<InfoMovie>
 
 
 }
