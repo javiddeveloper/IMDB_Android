@@ -39,11 +39,12 @@ class ListMovieFragment : Fragment() {
         mBinding = ListMovieFragmentBinding.inflate(inflater, container, false)
         mBinding.action = this
         mBinding.include.editTextSearch.textChanges()
-            .debounce(3000,TimeUnit.MILLISECONDS)
-            .filter { it.length>3 }
+            .debounce(2000, TimeUnit.MILLISECONDS)
+            .filter { it.length > 3 }
             .subscribe {
+                mBinding.txtTitle.text = it.toString()
                 viewModel.callList(it.toString())
-        }
+            }
         return mBinding.root
 
     }
