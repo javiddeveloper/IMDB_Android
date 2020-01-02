@@ -18,7 +18,7 @@ import ir.javid.developer.imdb.ui.widgets.CustomImageView
 @BindingAdapter("imageUrl")
 fun imageFromUrl(img: CustomImageView, url: String?) {
     Glide.with(img.context).load(url)
-        .placeholder(img.context.getDrawable(R.drawable.background_gradient_nested))
+        .placeholder(img.context.getDrawable(R.drawable.ic_launcher_background))
         .into(img)
 }
 

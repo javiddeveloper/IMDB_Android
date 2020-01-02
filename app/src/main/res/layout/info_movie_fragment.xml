@@ -70,20 +70,16 @@
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/AppTheme.PopupOverlay">
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
 
-                        <ir.javid.developer.imdb.ui.widgets.CustomTextView
-                            android:id="@+id/txt_title"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="@{item.getTitle}"
-                            android:textColor="@color/white_title_text"
-                            app:fontType="bold"
-                            app:isVisible="@{!visible}" />
-                    </RelativeLayout>
+                    <ir.javid.developer.imdb.ui.widgets.CustomTextView
+                        android:id="@+id/txt_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@{item.getTitle}"
+                        android:textColor="@color/white_title_text"
+                        app:fontType="bold"
+                        app:isVisible="@{!visible}" />
                 </androidx.appcompat.widget.Toolbar>
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>

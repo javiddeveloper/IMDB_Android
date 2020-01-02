@@ -6,6 +6,7 @@ import ir.javid.developer.imdb.databinding.ListMovieItemBinding
 import android.view.LayoutInflater
 import ir.javid.developer.imdb.data.rest.model.Search
 import ir.javid.developer.imdb.ui.widgets.CustomImageView
+import kotlinx.android.synthetic.main.list_movie_item.view.*
 
 
 /**
@@ -15,7 +16,8 @@ class ListMovieAdapter(var list: List<Search>, private val listener: OnSearchCli
     RecyclerView.Adapter<ListMovieAdapter.ViewHolder>() {
 
     private lateinit var mBinding: ListMovieItemBinding
-    companion object{
+
+    companion object {
         var mListener: OnSearchClick? = null
     }
 
@@ -40,14 +42,13 @@ class ListMovieAdapter(var list: List<Search>, private val listener: OnSearchCli
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Search) {
             binding.item = item
-//            binding.poster.imageControl(CustomImageView.NORMAL, item.poster)
+            binding.txtTitle.isSelected = true
             binding.executePendingBindings()
-
         }
 
     }
 
-   interface OnSearchClick {
+    interface OnSearchClick {
         fun onClicked(search: Search)
     }
 

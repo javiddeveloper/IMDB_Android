@@ -9,16 +9,24 @@ import java.util.*
 /**
  * Developed by javid
  */
-class MoveiManager : Observer {
+class MovieManager : Observer {
     val liveInfoMovie: MutableLiveData<InfoMovie> = MutableLiveData()
     val liveImdb: MutableLiveData<Imdb> = MutableLiveData()
 
     companion object {
-        val instance: MoveiManager by lazy { MoveiManager() }
+        val instance: MovieManager by lazy { MovieManager() }
     }
 
     init {
         RestManager.instance.addObserver(this)
+    }
+
+    fun executeImdbList(artist: String) {
+        RestManager.instance.callImdbList(artist)
+    }
+
+    fun executeImdbInfoMovie(id: String) {
+        RestManager.instance.callImdbInfoMovie(id)
     }
 
     override fun update(observable: Observable?, any: Any?) {
@@ -33,4 +41,6 @@ class MoveiManager : Observer {
             }
         }
     }
+
+
 }

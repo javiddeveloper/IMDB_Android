@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="item"
             type="ir.javid.developer.imdb.data.rest.model.Search" />
@@ -26,21 +28,27 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:scaleType="centerCrop"
+            app:imageUrl="@{item.poster}"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:imageUrl="@{item.poster}"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ir.javid.developer.imdb.ui.widgets.CustomTextView
             android:id="@+id/txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:gravity="end"
             android:layout_marginEnd="10dp"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:freezesText="true"
+            android:gravity="end"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
             android:text="@{item.getTitle}"
             android:textColor="@color/title_text"
             android:textSize="20sp"
-            app:fontType="bold"
+            app:fontType="normal"
             app:layout_constraintRight_toLeftOf="@id/poster"
             app:layout_constraintTop_toTopOf="parent" />
 
