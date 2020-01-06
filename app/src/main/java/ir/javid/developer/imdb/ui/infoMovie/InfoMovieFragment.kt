@@ -40,7 +40,7 @@ class InfoMovieFragment : Fragment() {
         mBinding = InfoMovieFragmentBinding.inflate(inflater, container, false)
         mBinding.action = this
         mBinding.visible = true
-        viewModel.getMovieInfo(search)
+        context?.let { viewModel.getMovieInfo(it,search) }
         mBinding.appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
             if (-verticalOffset > appBarLayout.totalScrollRange / 2) {
                 mBinding.visible = false

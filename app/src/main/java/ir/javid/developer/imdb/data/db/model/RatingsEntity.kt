@@ -1,8 +1,4 @@
-package ir.javid.developer.imdb.data.model
-
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+package ir.javid.developer.imdb.data.db.model
 
 /**
  * Developed by javid

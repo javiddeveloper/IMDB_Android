@@ -11,7 +11,7 @@
 
         <variable
             name="item"
-            type="ir.javid.developer.imdb.data.rest.model.InfoMovie" />
+            type="ir.javid.developer.imdb.data.db.model.InfoMovieEntity" />
 
         <variable
             name="visible"

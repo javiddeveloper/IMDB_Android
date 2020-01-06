@@ -1,7 +1,5 @@
 package ir.javid.developer.imdb.data.rest
 
-import androidx.lifecycle.MutableLiveData
-import ir.javid.developer.imdb.data.db.MovieInfoDB
 import ir.javid.developer.imdb.data.rest.model.Address
 //import io.reactivex.android.schedulers.AndroidSchedulers
 //import io.reactivex.disposables.CompositeDisposable
@@ -26,7 +24,6 @@ class RestManager : Observable() {
     }
 
     fun callImdbList(artist: String) {
-
         val call = api.getImdbList(Address.instance.api, artist)
         call.enqueue(object : Callback<Imdb> {
             override fun onFailure(call: Call<Imdb>, t: Throwable) {
