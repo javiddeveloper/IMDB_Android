@@ -8,7 +8,6 @@ import androidx.room.*
  */
 @Entity(tableName = "tbl_info_movie")
 data class InfoMovieEntity(
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "infoId") var id: Int,
     var title: String,
     var year: String,
     var rated: String,
@@ -26,7 +25,7 @@ data class InfoMovieEntity(
     var metascore: String,
     var imdbRating: String,
     var imdbVotes: String,
-    var imdbID: String,
+    @PrimaryKey var imdbID: String,
     var type: String,
     var dVD: String,
     var boxOffice: String,

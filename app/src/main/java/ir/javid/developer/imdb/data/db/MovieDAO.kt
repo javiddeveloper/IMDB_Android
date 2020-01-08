@@ -16,12 +16,13 @@ import ir.javid.developer.imdb.data.rest.model.InfoMovie
 @Dao
 interface MovieDAO {
 
-    @Query("SELECT * FROM tbl_info_movie ORDER BY infoId DESC")
-    fun getAllMovieInfo(): LiveData<List<InfoMovieEntity>>
+    @Query("SELECT * FROM tbl_info_movie ORDER BY imdbID DESC")
+    fun getAllMovieInfo():List<InfoMovieEntity>
 
 
-    @Query("SELECT * FROM tbl_info_movie WHERE imdbID > :imdbID")
-    fun getMovieInfo(imdbID: String): MutableLiveData<InfoMovieEntity>
+    @Query("SELECT * FROM tbl_info_movie WHERE imdbID = :imdbID")
+    fun getMovieInfo(imdbID: String): InfoMovieEntity
+//    fun getMovieInfo(imdbID: String): MutableLiveData<InfoMovieEntity>
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

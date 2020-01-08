@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import ir.javid.developer.imdb.data.db.model.InfoMovieEntity
+import ir.javid.developer.imdb.tools.ContextModel
 
 /**
  * Developed by javid
@@ -17,20 +18,20 @@ abstract class MovieDB : RoomDatabase() {
 //        @Volatile
         private var INSTANCE: MovieDB? = null
 
-        fun getDatabase(context: Context): MovieDB {
-//            val tempInstance = INSTANCE
-//            if (tempInstance != null) {
-//                return tempInstance
-//            }
-//            synchronized(this) {
+        fun getDatabase(): MovieDB {
+            val tempInstance = INSTANCE
+            if (tempInstance != null) {
+                return tempInstance
+            }
+            synchronized(this) {
                 val instance = Room.databaseBuilder(
-                    context.applicationContext,
+                    ContextModel.context!!.applicationContext,
                     MovieDB::class.java,
                     "Movie_db"
                 ).build()
-//                INSTANCE = instance
+                INSTANCE = instance
                 return instance
-//            }
+            }
         }
     }
 }
