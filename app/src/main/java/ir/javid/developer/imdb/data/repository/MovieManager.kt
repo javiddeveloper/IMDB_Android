@@ -39,17 +39,12 @@ class MovieManager : Observer {
 
     fun executeImdbInfoMovie(imdbID: String) {
         if (Utils.isNetworkAccess()) {
-            AsyncTask.execute {
-                if (MovieDB.getDatabase().movieDAO().getMovieInfo(imdbID) != null)
-                    liveInfoMovie.postValue(
-                        MovieDB.getDatabase().movieDAO().getMovieInfo(imdbID)
-                    )
-            }
             RestManager.instance.callImdbInfoMovie(imdbID)
-        } else {
-            AsyncTask.execute {
-                liveInfoMovie.postValue(MovieDB.getDatabase().movieDAO().getMovieInfo(imdbID))
-            }
+        }
+        AsyncTask.execute {
+            if (MovieDB.getDatabase().movieDAO().getMovieInfo(imdbID) != null)
+                liveInfoMovie.postValue(
+                    MovieDB.getDatabase().movieDAO().getMovieInfo(imdbID))
         }
     }
 
