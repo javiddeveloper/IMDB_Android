@@ -10,6 +10,7 @@ import ir.javid.developer.imdb.data.rest.RestManager
 import ir.javid.developer.imdb.data.rest.model.Imdb
 import ir.javid.developer.imdb.data.rest.model.InfoMovie
 import ir.javid.developer.imdb.tools.ContextModel
+import ir.javid.developer.imdb.tools.Utils
 import kotlinx.coroutines.runBlocking
 import java.util.*
 import kotlin.concurrent.thread
@@ -36,9 +37,15 @@ class MovieManager : Observer {
         RestManager.instance.callImdbList(artist)
     }
 
-    fun executeImdbInfoMovie(context: Context, id: String) {
-//        liveInfoMovie.value = MovieDB.getDatabase(context).movieDAO().getMovieInfo(id).value
-        RestManager.instance.callImdbInfoMovie(id)
+    fun executeImdbInfoMovie(imdbID: String) {
+        if (Utils.isNetworkAccess()) {
+            RestManager.instance.callImdbInfoMovie(imdbID)
+        }
+        AsyncTask.execute {
+            if (MovieDB.getDatabase().movieDAO().getMovieInfo(imdbID) != null)
+                liveInfoMovie.postValue(
+                    MovieDB.getDatabase().movieDAO().getMovieInfo(imdbID))
+        }
     }
 
     override fun update(observable: Observable?, any: Any?) {
@@ -49,21 +56,26 @@ class MovieManager : Observer {
                 }
                 is InfoMovie -> {
                     AsyncTask.execute { saveToDB(convertDataToDAO(any)) }
-
                 }
             }
         }
     }
 
-    private fun saveToDB(infoMovieEntity: InfoMovieEntity?) {
-        MovieDB.getDatabase(ContextModel.context!!).movieDAO().addMovieInfo(infoMovieEntity!!)
-        liveInfoMovie.value = MovieDB.getDatabase(ContextModel.context!!).movieDAO().getMovieInfo(infoMovieEntity.imdbID).value
+    @Synchronized
+    private fun saveToDB(entity: InfoMovieEntity?) {
+        MovieDB.getDatabase().movieDAO().addMovieInfo(entity!!)
+        liveInfoMovie.postValue(
+            MovieDB
+                .getDatabase()
+                .movieDAO()
+                .getMovieInfo(entity.imdbID)
+        )
+
     }
 
 
     private fun convertDataToDAO(any: InfoMovie): InfoMovieEntity? {
         return InfoMovieEntity(
-            0,
             any.title,
             any.year,
             any.rated,

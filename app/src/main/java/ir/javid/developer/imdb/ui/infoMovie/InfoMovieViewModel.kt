@@ -10,8 +10,8 @@ import ir.javid.developer.imdb.data.rest.model.InfoMovie
 class InfoMovieViewModel : ViewModel() {
 
     val liveInfoMovie: MutableLiveData<InfoMovieEntity> = MovieManager.instance.liveInfoMovie
-    fun getMovieInfo(context: Context, id: String) {
-        MovieManager.instance.executeImdbInfoMovie(context, id)
+    fun getMovieInfo(id: String) {
+        MovieManager.instance.executeImdbInfoMovie(id)
     }
 
 }

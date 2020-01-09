@@ -1,4 +1,4 @@
-package ir.javid.developer.imdb.tools
+package ir.javid.developer.imdb.ui.dataBindingAdapter
 
 import android.os.Build
 import android.view.View
