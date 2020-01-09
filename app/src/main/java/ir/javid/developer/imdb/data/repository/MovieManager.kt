@@ -48,7 +48,6 @@ class MovieManager : Observer {
                     liveImdb.value = any
                 }
                 is InfoMovie -> {
-//                    AsyncTask.execute( saveToDB(convertDataToDAO(any))
                     AsyncTask.execute { saveToDB(convertDataToDAO(any)) }
 
                 }
