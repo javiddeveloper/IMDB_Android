@@ -1,5 +1,6 @@
 package ir.javid.developer.imdb.data.rest
 
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import ir.javid.developer.imdb.data.rest.model.Address.Companion.BASE_URL
 import okhttp3.OkHttpClient
 import retrofit2.converter.gson.GsonConverterFactory
@@ -20,9 +21,9 @@ class ApiClient {
             val request = original.newBuilder().build()
             chain.proceed(request)
         }
-            .connectTimeout(2000, TimeUnit.SECONDS)
-            .writeTimeout(2000, TimeUnit.SECONDS)
-            .readTimeout(3000, TimeUnit.SECONDS)
+//            .connectTimeout(2000, TimeUnit.SECONDS)
+//            .writeTimeout(2000, TimeUnit.SECONDS)
+//            .readTimeout(3000, TimeUnit.SECONDS)
 
 
         return httpClient.build()
@@ -32,7 +33,7 @@ class ApiClient {
         return Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client())
-//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build().create(Api::class.java)
     }
 }

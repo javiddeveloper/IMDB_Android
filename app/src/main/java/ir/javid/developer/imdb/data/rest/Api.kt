@@ -1,5 +1,6 @@
 package ir.javid.developer.imdb.data.rest
 
+import io.reactivex.Observable
 import ir.javid.developer.imdb.data.rest.model.Address
 import ir.javid.developer.imdb.data.rest.model.Imdb
 import ir.javid.developer.imdb.data.rest.model.InfoMovie
@@ -15,11 +16,11 @@ interface Api {
 
     // get imdb list
     @GET(Address.BASE_URL)
-    fun getImdbList(@Query("apikey") apikey: String, @Query("s") artist: String): Call<Imdb>
+    fun getImdbList(@Query("apikey") apikey: String, @Query("s") artist: String): Observable<Imdb>
 
     // get imdb list
     @GET(Address.BASE_URL)
-    fun getInfoFilm(@Query("apikey") apikey: String, @Query("i") imdbID: String): Call<InfoMovie>
+    fun getInfoFilm(@Query("apikey") apikey: String, @Query("i") imdbID: String): Observable<InfoMovie>
 
 
 }

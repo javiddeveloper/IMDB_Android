@@ -6,6 +6,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import io.reactivex.Observable
 import ir.javid.developer.imdb.data.db.model.InfoMovieEntity
 import ir.javid.developer.imdb.data.rest.model.InfoMovie
 
@@ -22,7 +23,6 @@ interface MovieDAO {
 
     @Query("SELECT * FROM tbl_info_movie WHERE imdbID = :imdbID")
     fun getMovieInfo(imdbID: String): InfoMovieEntity
-//    fun getMovieInfo(imdbID: String): MutableLiveData<InfoMovieEntity>
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

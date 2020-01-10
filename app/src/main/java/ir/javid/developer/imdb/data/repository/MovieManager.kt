@@ -3,6 +3,9 @@ package ir.javid.developer.imdb.data.repository
 import android.content.Context
 import android.os.AsyncTask
 import androidx.lifecycle.MutableLiveData
+import io.reactivex.Observable
+import io.reactivex.ObservableSource
+import io.reactivex.functions.Function
 import ir.javid.developer.imdb.data.db.MovieDAO
 import ir.javid.developer.imdb.data.db.MovieDB
 import ir.javid.developer.imdb.data.db.model.InfoMovieEntity
@@ -18,7 +21,7 @@ import kotlin.concurrent.thread
 /**
  * Developed by javid
  */
-class MovieManager : Observer {
+class MovieManager {
     val liveInfoMovie: MutableLiveData<InfoMovieEntity> = MutableLiveData()
     val liveImdb: MutableLiveData<Imdb> = MutableLiveData()
 
@@ -28,49 +31,35 @@ class MovieManager : Observer {
         }
     }
 
-    init {
-        RestManager.instance.addObserver(this)
+    fun executeImdbList(artist: String) : Observable<Imdb> {
+//        RestManager.instance.callImdbList(artist)
+        return RestManager.instance.callImdbList(artist)
 
     }
 
-    fun executeImdbList(artist: String) {
-        RestManager.instance.callImdbList(artist)
-    }
+//    fun executeImdbInfoMovie(imdbID: String): Observable<InfoMovieEntity> {
+//        return if (Utils.isNetworkAccess()) {
+//            RestManager.instance.callImdbInfoMovie(imdbID)
+//                .doOnNext { t: InfoMovie? -> saveToDB(convertDataToDAO(t!!)) }
+//                .flatMap { MovieDB.getDatabase().movieDAO().getMovieInfo(imdbID) }
+//
+//        } else {
+////                AsyncTask.execute {
+//            MovieDB.getDatabase().movieDAO().getMovieInfo(imdbID)
+////                }
+//        }
+//    }
 
-    fun executeImdbInfoMovie(imdbID: String) {
-        if (Utils.isNetworkAccess()) {
-            RestManager.instance.callImdbInfoMovie(imdbID)
-        }
-        AsyncTask.execute {
-            if (MovieDB.getDatabase().movieDAO().getMovieInfo(imdbID) != null)
-                liveInfoMovie.postValue(
-                    MovieDB.getDatabase().movieDAO().getMovieInfo(imdbID))
-        }
-    }
-
-    override fun update(observable: Observable?, any: Any?) {
-        if (observable is RestManager) {
-            when (any) {
-                is Imdb -> {
-                    liveImdb.value = any
-                }
-                is InfoMovie -> {
-                    AsyncTask.execute { saveToDB(convertDataToDAO(any)) }
-                }
-            }
-        }
-    }
 
     @Synchronized
     private fun saveToDB(entity: InfoMovieEntity?) {
         MovieDB.getDatabase().movieDAO().addMovieInfo(entity!!)
-        liveInfoMovie.postValue(
-            MovieDB
-                .getDatabase()
-                .movieDAO()
-                .getMovieInfo(entity.imdbID)
-        )
-
+//        liveInfoMovie.postValue(
+//            MovieDB
+//                .getDatabase()
+//                .movieDAO()
+//                .getMovieInfo(entity.imdbID)
+//        )
     }
 
 
