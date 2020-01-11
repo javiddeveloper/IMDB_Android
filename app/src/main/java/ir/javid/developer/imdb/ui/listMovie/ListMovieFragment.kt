@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jakewharton.rxbinding3.widget.textChanges
 import io.reactivex.android.plugins.RxAndroidPlugins
+import io.reactivex.android.schedulers.AndroidSchedulers
 import ir.javid.developer.imdb.R
 import ir.javid.developer.imdb.databinding.ListMovieFragmentBinding
 import ir.javid.developer.imdb.data.rest.model.Search
@@ -41,6 +42,7 @@ class ListMovieFragment : Fragment() {
         mBinding.include.editTextSearch.textChanges()
             .debounce(2000, TimeUnit.MILLISECONDS)
             .filter { it.length > 3 }
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
                 mBinding.txtTitle.text = it.toString()
                 viewModel.callList(it.toString())

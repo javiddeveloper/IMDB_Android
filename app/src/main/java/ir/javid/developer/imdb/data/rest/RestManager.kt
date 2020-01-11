@@ -1,5 +1,7 @@
 package ir.javid.developer.imdb.data.rest
 
+import io.reactivex.Scheduler
+import io.reactivex.schedulers.Schedulers
 import ir.javid.developer.imdb.data.rest.model.Address
 import ir.javid.developer.imdb.data.rest.model.Imdb
 import ir.javid.developer.imdb.data.rest.model.InfoMovie
@@ -43,11 +45,10 @@ class RestManager {
 //                    callImdbList(artist)
 //                }
 //        })
-        return api.getImdbList(Address.API_KEY_ONE, artist)
+        return api.getImdbList(Address.API_KEY_ONE, artist).subscribeOn(Schedulers.io())
     }
 
     fun callImdbInfoMovie(imdbID: String): io.reactivex.Observable<InfoMovie> {
-        return api.getInfoFilm(Address.API_KEY_ONE, imdbID)
 //        val call = api.getInfoFilm(Address.API_KEY_ONE, imdbID)
 //        call.enqueue(object : Callback<InfoMovie> {
 //            override fun onFailure(call: Call<InfoMovie>, t: Throwable) {
@@ -65,6 +66,7 @@ class RestManager {
 //                }
 //            }
 //        })
+        return api.getInfoFilm(Address.API_KEY_ONE, imdbID)
     }
 
 

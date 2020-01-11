@@ -14,8 +14,9 @@ import ir.javid.developer.imdb.tools.ContextModel
 abstract class MovieDB : RoomDatabase() {
 
     abstract fun movieDAO(): MovieDAO
+
     companion object {
-//        @Volatile
+        //        @Volatile
         private var INSTANCE: MovieDB? = null
 
         fun getDatabase(): MovieDB {
@@ -28,7 +29,8 @@ abstract class MovieDB : RoomDatabase() {
                     ContextModel.context!!.applicationContext,
                     MovieDB::class.java,
                     "Movie_db"
-                ).build()
+                )
+                    .build()
                 INSTANCE = instance
                 return instance
             }

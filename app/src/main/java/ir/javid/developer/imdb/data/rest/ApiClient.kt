@@ -15,24 +15,18 @@ class ApiClient {
 
     fun client():OkHttpClient{
         val httpClient = OkHttpClient.Builder()
-
         httpClient.addInterceptor { chain ->
             val original = chain.request()
             val request = original.newBuilder().build()
             chain.proceed(request)
         }
-//            .connectTimeout(2000, TimeUnit.SECONDS)
-//            .writeTimeout(2000, TimeUnit.SECONDS)
-//            .readTimeout(3000, TimeUnit.SECONDS)
-
-
         return httpClient.build()
     }
 
     fun loadData(): Api {
         return Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
-            .client(client())
+//            .client(client())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build().create(Api::class.java)
     }
