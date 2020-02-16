@@ -17,14 +17,23 @@ class ListMovieViewModel : ViewModel() {
 
     init {
 //        MovieManager.instance.executeImdbList(artist)
-        MovieManager.instance.executeImdbList(artist).subscribe(Consumer { liveImdb.postValue(it) },
-            Consumer { it.printStackTrace() })
+        MovieManager.instance.executeImdbList(artist).subscribe(Consumer
+        {
+            liveImdb.postValue(it) },
+            Consumer {
+                it.printStackTrace()
+            })
     }
 
     fun callList(moveiName: String) {
 //        MovieManager.instance.executeImdbList(moveiName).subscribe(->liveImdb.postValue())
-        MovieManager.instance.executeImdbList(moveiName).subscribe(Consumer { liveImdb.postValue(it) },
-            Consumer { it.printStackTrace() })
+        MovieManager.instance.executeImdbList(moveiName)
+            .subscribe(Consumer {
+                liveImdb.postValue(it)
+            },
+            Consumer {
+                it.printStackTrace()
+            })
     }
 
 }

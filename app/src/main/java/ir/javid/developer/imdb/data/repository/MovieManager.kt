@@ -1,64 +1,44 @@
 package ir.javid.developer.imdb.data.repository
 
-import android.content.Context
-import android.os.AsyncTask
-import androidx.lifecycle.MutableLiveData
 import io.reactivex.Observable
-import io.reactivex.ObservableSource
-import io.reactivex.functions.Consumer
-import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
-import ir.javid.developer.imdb.data.db.MovieDAO
 import ir.javid.developer.imdb.data.db.MovieDB
 import ir.javid.developer.imdb.data.db.model.InfoMovieEntity
 import ir.javid.developer.imdb.data.rest.RestManager
 import ir.javid.developer.imdb.data.rest.model.Imdb
 import ir.javid.developer.imdb.data.rest.model.InfoMovie
-import ir.javid.developer.imdb.tools.ContextModel
 import ir.javid.developer.imdb.tools.Utils
-import kotlinx.coroutines.runBlocking
-import java.util.*
 import java.util.concurrent.Callable
-import kotlin.concurrent.thread
 
 /**
  * Developed by javid
  */
 class MovieManager {
-    val liveInfoMovie: MutableLiveData<InfoMovieEntity> = MutableLiveData()
-    val liveImdb: MutableLiveData<Imdb> = MutableLiveData()
-
     companion object {
         val instance: MovieManager by lazy {
             MovieManager()
         }
     }
 
-    fun executeImdbList(artist: String) : Observable<Imdb> {
-//        RestManager.instance.callImdbList(artist)
+    fun executeImdbList(artist: String): Observable<Imdb> {
         return RestManager.instance.callImdbList(artist)
-
     }
 
     fun executeImdbInfoMovie(imdbID: String): Observable<InfoMovieEntity> {
         return if (Utils.isNetworkAccess()) {
             RestManager.instance.callImdbInfoMovie(imdbID)
                 .subscribeOn(Schedulers.io())
-                .map{ infoMovie:InfoMovie-> convertDataToDAO(infoMovie)
+                .map { infoMovie: InfoMovie ->
+                    convertDataToDAO(infoMovie)
                 }
-                .doOnNext{
+                .doOnNext {
                     saveToDB(it)
                 }
-
-
-//                .doOnNext { t: InfoMovie? -> saveToDB(convertDataToDAO(t!!)) }
-//                .flatMap { MovieDB.getDatabase().movieDAO().getMovieInfo(imdbID) }
-
         } else {
-//                AsyncTask.execute {
-           Observable.fromCallable( Callable { MovieDB.getDatabase().movieDAO().getMovieInfo(imdbID) })
-               .subscribeOn(Schedulers.io())
-//                }
+            Observable.fromCallable(Callable {
+                MovieDB.getDatabase().movieDAO().getMovieInfo(imdbID)
+            })
+                .subscribeOn(Schedulers.io())
         }
     }
 
@@ -66,12 +46,6 @@ class MovieManager {
     @Synchronized
     private fun saveToDB(entity: InfoMovieEntity?) {
         MovieDB.getDatabase().movieDAO().addMovieInfo(entity!!)
-//        liveInfoMovie.postValue(
-//            MovieDB
-//                .getDatabase()
-//                .movieDAO()
-//                .getMovieInfo(entity.imdbID)
-//        )
     }
 
 
